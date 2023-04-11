@@ -18,6 +18,8 @@ output:
 
   console.log(value()) = 15
 
+-----------------------------------------------------------------------
+
 2. Write a recursive function that searches an array for a specific value. The
 function should return true if the value is found, and false if it is not. You
 can assume that the array is not nested.
@@ -37,6 +39,8 @@ can assume that the array is not nested.
   }
   console.log(valueFinder(numberArray, 22));
 
+-----------------------------------------------------------------------
+
 3. Write a function that adds a new paragraph element to the bottom of an
 HTML document. The function should take a string argument that will be
 used as the text content of the new paragraph element.
@@ -51,6 +55,9 @@ used as the text content of the new paragraph element.
   }
 
   addParagraph("Hello, world!")
+
+
+-----------------------------------------------------------------------
 
 4. Write a function that adds a new list item to an unordered list in an HTML
 document. The function should take a string argument that will be used as
@@ -71,6 +78,9 @@ the text content of the new list item.
 
 
   document.body.appendChild(addListItem("hello"));
+
+
+-----------------------------------------------------------------------
 
 
 5. Write a function that changes the background color of an HTML element.
@@ -97,6 +107,8 @@ the new background color.
 
   backgroundChanger(element, "red");
 
+-----------------------------------------------------------------------
+
 
 6. Write a function that saves an object to localStorage. The function should
 take two arguments: the first argument is a string representing the key to
@@ -111,6 +123,9 @@ use for storing the object, and the second argument is the object to store.
   }
 
   storage("name", "hamid");
+
+
+-----------------------------------------------------------------------
 
 7. Write a function that retrieves an object from localStorage. The function
 should take one argument, which is a string representing the key used to
@@ -132,6 +147,8 @@ store the object. The function should return the object.
 
     return obj;
   }
+
+-----------------------------------------------------------------------
 
 
 8. Write a function that takes an object and saves each property to
@@ -166,6 +183,11 @@ and return it as a new object.
       return "Argument is not a valid object";
     }
   }
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+
 
 
 
