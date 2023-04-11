@@ -1,0 +1,171 @@
+
+1.Write a function that creates a closure and returns a function that can add
+a specific number to any number passed to it. For example, if the closure is
+created with 5, the returned function should add 5 to any number passed
+to it.
+
+----------------------CODE----------------------------------------
+
+ function createSummer(num) {
+    return function () {
+      return 10 + num;
+    };
+  }
+
+  let value = createSummer(5);
+
+output:
+
+  console.log(value()) = 15
+
+2. Write a recursive function that searches an array for a specific value. The
+function should return true if the value is found, and false if it is not. You
+can assume that the array is not nested.
+
+---------------------------CODE-----------------------------------
+
+  let numberArray = [...Array(21).keys()];
+
+  function valueFinder(array, value) {
+    if (array.length === 0) {
+      return false;
+    } else if (array[0] === value) {
+      return true;
+    } else {
+      return valueFinder(array.slice(1), value);
+    }
+  }
+  console.log(valueFinder(numberArray, 22));
+
+3. Write a function that adds a new paragraph element to the bottom of an
+HTML document. The function should take a string argument that will be
+used as the text content of the new paragraph element.
+
+
+---------------------------CODE-----------------------------------
+
+ function addParagraph(text) {
+    const newParagraph = document.createElement("p");
+    newParagraph.innerText = text;
+    document.body.appendChild(newParagraph);
+  }
+
+  addParagraph("Hello, world!")
+
+4. Write a function that adds a new list item to an unordered list in an HTML
+document. The function should take a string argument that will be used as
+the text content of the new list item.
+
+---------------------------CODE-----------------------------------
+
+
+
+  const UL = document.createElement("ul");
+
+  function addListItem(text) {
+    let newListItem = document.createElement("li");
+    newListItem.innerHTML = text;
+    return UL.appendChild(newListItem);
+  }
+
+
+
+  document.body.appendChild(addListItem("hello"));
+
+
+5. Write a function that changes the background color of an HTML element.
+The function should take two arguments: the first argument is a reference
+to the HTML element, and the second argument is a string representing
+the new background color.
+
+---------------------------CODE-----------------------------------
+
+//element reference//
+
+ const element = document.createElement("div");
+  element.style.height = "100px";
+  element.style.width = "200px";
+  document.body.appendChild(element);
+
+// function//
+
+  function backgroundChanger(elem, color) {
+    elem.style.backgroundColor = color;
+  }
+
+// function call//
+
+  backgroundChanger(element, "red");
+
+
+6. Write a function that saves an object to localStorage. The function should
+take two arguments: the first argument is a string representing the key to
+use for storing the object, and the second argument is the object to store.
+
+---------------------------CODE-----------------------------------
+
+
+  function storage(key, value) {
+    let valueSring = JSON.stringify(value);
+    localStorage.setItem(key, valueSring);
+  }
+
+  storage("name", "hamid");
+
+7. Write a function that retrieves an object from localStorage. The function
+should take one argument, which is a string representing the key used to
+store the object. The function should return the object.
+
+---------------------------CODE-----------------------------------
+
+
+ function getStorage(key) {
+    const value = JSON.parse(localStorage.getItem(key));
+
+    let obj;
+
+    if (value) {
+      obj = { key: key, value: value };
+    } else {
+      obj = { key: key, value: "Not Found" };
+    }
+
+    return obj;
+  }
+
+
+8. Write a function that takes an object and saves each property to
+localStorage using the property name as the key and the property value as
+the value. The function should also retrieve the object from localStorage
+and return it as a new object.
+
+---------------------------CODE-----------------------------------
+
+
+  let myObj = { fruit: "apple", veg: "cucumber", drink: "milk" };
+
+  function useLocalStorage(obj) {
+    let keys = Object.keys(obj);
+
+    let newObj = {};
+
+    if (typeof obj === "object" && Object.keys(obj).length !== 0) {
+      keys.forEach(function (key) {
+        let value = JSON.stringify(obj[key]);
+        localStorage.setItem(key, value);
+      });
+
+      keys.forEach(function (key) {
+        let output = {};
+        let value = JSON.parse(localStorage.getItem(key));
+        newObj[key] = value;
+      });
+
+      return newObj;
+    } else {
+      return "Argument is not a valid object";
+    }
+  }
+
+
+
