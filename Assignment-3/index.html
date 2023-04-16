@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Recommendation App</title>
+    <!-- <script type="text/javascript" src="data.json" defer></script> -->
+    <script src="script.js" defer>
+
+      // import data from "./data.json" assert { type: "JSON" };
+    </script>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- navbar for app -->
+    <header class="nav">
+      <h2 id="title">Movie Recommendation App</h2>
+      <h4>Hi' Hamid</h4>
+    </header>
+
+    <!-- input block for app -->
+    <main>
+      <div class="input_block">
+        <div class="input_container">
+          <label for="Genre">Choose a genre</label>
+          <select name="Genre" id="genre"></select>
+        </div>
+        <div class="input_container">
+          <label for="Year">Choose a year</label>
+          <select name="Year" id="year"></select>
+        </div>
+        <div class="input_container">
+          <label for="Language">Choose a language</label>
+          <select name="Language" id="language"></select>
+        </div>
+        <div class="input_container">
+          <label for="Rating">Choose a Rating</label>
+          <select name="Rating" id="rating"></select>
+        </div>
+      </div>
+
+      <div id = 'count'></div>
+
+      <div class="table_block">
+       
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Movie</th>
+              <th>Year</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+       
+      </div>
+
+      <div class = 'loader_div'>
+        <div class="loader"></div>
+      </div>
+    </main>
+  </body>
+</html>
