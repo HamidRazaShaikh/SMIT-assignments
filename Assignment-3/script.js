@@ -51,7 +51,6 @@
 
     query = [...set];
 
-    console.log(query);
     let Data = data;
     if (query.length !== 0) {
       query.forEach(({ key, value }) => {
@@ -193,7 +192,7 @@
 
       data.map((item, index) => {
         divElem = `<div>
-    <div>  <img src = "./images/movie_image.webp" alt = ${item.title}</div>
+    <div>  <img src = "https://image.tmdb.org/t/p/w500${item.poster_path}" alt = ${item.title}</div>
     <div>
     <h2>${item.title}</h2>
     <div>
@@ -222,6 +221,7 @@
   };
 
   tableGenerator(data);
+  console.log(data);
 
   // end
 })();
