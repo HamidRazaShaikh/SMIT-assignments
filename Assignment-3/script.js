@@ -31,51 +31,56 @@
 
   let data = await fetchData();
 
-  const handleChange = async (e, cat) => {
-    let term = e.target.value;
+  const handleChange = async () => {
+    let query = [];
+    let genres = await selectGenre.value;
+    let year = await selectYear.value;
+    let language = await selectLanguage.value;
+    let rating = await selectRating.value;
+
+    query.push(
+      { key: "genres", value: genres },
+      { key: "release_date", value: year },
+      { key: "original_language", value: language },
+      { key: "vote_average", value: rating }
+    );
+
+    let query2 = query.filter((e) => !e.value.includes("All"));
+    const keys = query2.map((o) => o.key);
+    let set = query2.filter(({ key }, index) => !keys.includes(key, index + 1));
+
+    query = [...set];
+
+    console.log(query);
     let Data = data;
+    if (query.length !== 0) {
+      query.forEach(({ key, value }) => {
+        if (key === "genres" || key === "release_date") {
+          let newData = Data.filter((item) => item[key].includes(value));
+          Data = newData;
+        }
 
-    if (cat === "genres" && term !== "All") {
-      let newData = Data.filter((item) => {
-        return item.genres.includes(term);
+        if (key === "original_language") {
+          let newData = Data.filter((item) => item[key] === value);
+          Data = newData;
+        }
+
+        if (key === "vote_average") {
+          let newData = Data.filter((item) => item[key] === +value);
+          Data = newData;
+        }
       });
 
-      data = newData;
-      tableGenerator();
-    }
-
-    if (cat === "year" && term !== "All") {
-      let newData = Data.filter((item) => {
-        return item.release_date.includes(term);
-      });
-
-      data = newData;
-      tableGenerator();
-    } else if (cat === "language" && term !== "All") {
-      let newData = Data.filter((item) => {
-        return item.original_language.includes(term);
-      });
-
-      data = newData;
-      tableGenerator();
-    } else if (cat === "rating" && term !== "All") {
-      let newData = Data.filter((item) => {
-        return item.vote_average === +term;
-      });
-
-      data = newData;
-      tableGenerator();
-      console.log(data);
-    } else if (term === "All") {
-      data = await fetchData();
-      tableGenerator();
+      tableGenerator(Data);
+    } else {
+      tableGenerator(data);
     }
   };
 
-  selectGenre.addEventListener("change", (e) => handleChange(e, "genres"));
-  selectYear.addEventListener("change", (e) => handleChange(e, "year"));
-  selectLanguage.addEventListener("change", (e) => handleChange(e, "language"));
-  selectRating.addEventListener("change", (e) => handleChange(e, "rating"));
+  selectGenre.addEventListener("change", handleChange);
+  selectYear.addEventListener("change", handleChange);
+  selectLanguage.addEventListener("change", handleChange);
+  selectRating.addEventListener("change", handleChange);
 
   // genre dynamic listing
 
@@ -170,7 +175,7 @@
     return input.toString();
   };
 
-  const tableGenerator = () => {
+  const tableGenerator = (data) => {
     table.innerHTML = `  <thead>
     <tr>
       <th>Rank</th>
@@ -216,7 +221,7 @@
     }
   };
 
-  tableGenerator();
+  tableGenerator(data);
 
   // end
 })();
