@@ -191,8 +191,10 @@
       table.classList.add("table");
 
       data.map((item, index) => {
-        divElem = `<div>
-    <div>  <img src = "https://image.tmdb.org/t/p/w500${item.poster_path}" alt = ${item.title}</div>
+        divElem = `<a href = "pages/detailpage/detail.html?id=${item.id}"><div>
+    <div>  <img src = "https://image.tmdb.org/t/p/w500${
+      item.poster_path
+    }" alt = ${item.title}></div>
     <div>
     <h2>${item.title}</h2>
     <div>
@@ -204,7 +206,7 @@
         
     
     
-        </div>`;
+   </div> </a>`;
 
         (row = table.insertRow(1)),
           (cell1 = row.insertCell(0)),
